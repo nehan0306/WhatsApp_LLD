@@ -10,13 +10,14 @@ class ChatService:
         chat.messages.append(message)
         message.sender = user
         message.receiver_chat = chat
-        message.timestamp = datetime.now()
+        message.set_sent_time()
 
-    def send_voice_message(self, chat: Chat, message: Message, voice_message_url):
+    def send_voice_message(self, user: User, chat: Chat, message: Message, voice_message_url):
         message.message_content = voice_message_url
+        message.sender = user
         chat.messages.append(message)
         message.receiver_chat = chat
-        message.timestamp = datetime.now()
+        message.set_sent_time()
 
     def add_attachments(self, chat: Chat, media: SharedMedia):
         chat.shared_media.append(media)
@@ -24,7 +25,7 @@ class ChatService:
     def search_message(self, chat: Chat, search_word: str):
         found_messages = []
         for message in chat.messages:
-            if search_word.lower() in message.message_content.lower():
+            if message.message_content and search_word.lower() in message.message_content.lower():
                 found_messages.append(message)
         return found_messages
 

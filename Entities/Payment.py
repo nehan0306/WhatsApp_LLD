@@ -9,3 +9,6 @@ class Payment:
         self.status = None
         self.timestamp = None
 
+    def update_payment_status(self, status):
+        self.status = status
+

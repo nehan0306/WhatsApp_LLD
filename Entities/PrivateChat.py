@@ -7,5 +7,7 @@ class PrivateChat(Chat):
         self.user1: User
         self.user2 = User()
         self.is_blocked = None
-        self.is_muted = None
         self.mute_duration = None
+
+    def block(self):
+        self.is_blocked = True

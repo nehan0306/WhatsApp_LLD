@@ -11,6 +11,19 @@ class Chat:
         self.is_archive = None
         self.is_favorite = None
 
-    def mute_notification(self):
+    def set_muted(self):
         self.is_muted = True
+
+    def set_archived(self):
+        self.is_muted = True
+
+    def set_favorite(self):
+        self.is_favorite = True
+
+    def add_message(self, message):
+        self.messages.append(message)
+
+    def add_media(self, media):
+        self.shared_media.append(media)
+
 

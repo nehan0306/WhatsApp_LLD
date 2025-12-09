@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List
 from Entities.Reaction import Reactions
 from Entities.User import User
@@ -16,6 +17,9 @@ class Message:
         self.is_forwarded = None
         self.timestamp = None
 
+    def set_sent_time(self):
+        self.timestamp = datetime.now()
+
     def delete_message(self):
         self.is_deleted = True
 
@@ -28,4 +32,7 @@ class Message:
 
     def move_from_drafts(self):
         self.is_drafted = False
+
+    def forward_status(self):
+        self.is_forwarded = True
 
